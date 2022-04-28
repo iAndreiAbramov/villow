@@ -1,0 +1,84 @@
+@import "variables";
+
+$header-height: 96px;
+$page-padding: 30px;
+
+body {
+    margin: 0;
+
+    font-family: $ff-regular;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: $ff-title;
+}
+
+p {
+    margin: 0;
+    font-family: $ff-regular;
+}
+
+img {
+    max-width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+#root {
+    position: relative;
+
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: $header-height;
+    max-width: 100%;
+
+    //todo: delete
+    border: 1px solid lightsalmon;
+    background: lightgray;
+}
+
+.main-container {
+    max-width: 100%;
+    margin: $header-height auto 0;
+
+    //todo: delete
+    min-height: 2000px;
+    border: 1px solid lightsalmon;
+    background: azure;
+}
+
+.footer-container {
+    height: 220px;
+    max-width: 100%;
+
+    //todo: delete
+    border: 1px solid lightsalmon;
+    background: lightgray;
+}
+
+.container {
+    max-width: 960px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $page-padding;
+    padding-right: $page-padding;
+
+    //todo: delete
+    border-left: 1px solid darkred;
+    border-right: 1px solid darkred;
+}
