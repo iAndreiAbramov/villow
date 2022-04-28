@@ -25,8 +25,17 @@ img {
     max-width: 100%;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 #root {
@@ -48,7 +57,7 @@ li {
 
     //todo: delete
     border: 1px solid lightsalmon;
-    background: lightgray;
+    background: darkgray;
 }
 
 .main-container {
@@ -67,7 +76,7 @@ li {
 
     //todo: delete
     border: 1px solid lightsalmon;
-    background: lightgray;
+    background: darkgray;
 }
 
 .container {
@@ -81,4 +90,16 @@ li {
     //todo: delete
     border-left: 1px solid darkred;
     border-right: 1px solid darkred;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }

@@ -1,0 +1,99 @@
+@import '../../variables';
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+}
+
+.dropdown-select {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 120px;
+
+    cursor: pointer;
+}
+
+.dropdown-selectText {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.19;
+    color: $fc-light;
+    white-space: nowrap;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.dropdown-selectAngle {
+    -webkit-transition: linear 0.3s;
+    -moz-transition: linear 0.3s;
+    -ms-transition: linear 0.3s;
+    -o-transition: linear 0.3s;
+    transition: linear 0.3s;
+    &_reversed {
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown-options {
+    position: absolute;
+    right: -75%;
+    background-color: $bgc-light;
+    z-index: 10;
+}
+
+.dropdown-options_direction_down {
+    top: 50px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%) rotate(45deg);
+        -moz-transform: translate(-50%, -50%) rotate(45deg);
+        -ms-transform: translate(-50%, -50%) rotate(45deg);
+        -o-transform: translate(-50%, -50%) rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg);
+
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+
+        background-color: $bgc-light;
+    }
+}
+
+.dropdown-options_direction_up {
+    bottom: 50px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        bottom: 0;
+        -webkit-transform: translate(-50%, 50%) rotate(45deg);
+        -moz-transform: translate(-50%, 50%) rotate(45deg);
+        -ms-transform: translate(-50%, 50%) rotate(45deg);
+        -o-transform: translate(-50%, 50%) rotate(45deg);
+        transform: translate(-50%, 50%) rotate(45deg);
+
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+
+        background-color: $bgc-light;
+    }
+}

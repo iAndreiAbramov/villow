@@ -1,0 +1,23 @@
+@import "../../../variables";
+
+.dropdownItem {
+    padding: 15px;
+    min-width: 242px;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: $fw-regular;
+    font-size: 16px;
+    line-height: 1.75;
+    color: $fc-dark;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($bgc-light, 10%);
+    }
+
+    &:not(&:last-child) {
+        border-bottom: $border-grey;
+    }
+}
