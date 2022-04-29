@@ -37,7 +37,7 @@ export const App: React.FC = () => {
                     <h2>Footer</h2>
                     <Dropdown options={FooterDropdownOptions} direction={DropdownDirection.Up} />
                 </footer>
-            </FooterContainer>{' '}
+            </FooterContainer>
         </BrowserRouter>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface IMainContainerProps {
+export interface IContentContainerProps {
     customClassName?: string;
     children: React.ReactNode;
 }

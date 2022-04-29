@@ -1,8 +1,5 @@
 @import "variables";
 
-$header-height: 96px;
-$page-padding: 20px;
-
 body {
     margin: 0;
 
@@ -63,10 +60,10 @@ a {
 
 .main-container {
     max-width: 100%;
-    margin: $header-height auto 0;
+    margin: 0 auto;
 
     //todo: delete
-    min-height: 2000px;
+    min-height: 78vh;
     border: 1px solid lightsalmon;
     background: azure;
 }
@@ -82,6 +79,9 @@ a {
 }
 
 .container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     max-width: 960px;
     height: 100%;
     margin-left: auto;
