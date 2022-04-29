@@ -13,6 +13,14 @@
     width: 120px;
 
     cursor: pointer;
+
+    &:hover > .dropdown-selectText {
+        color: darken($fc-light, 30%);
+    }
+
+    &:hover > svg path {
+        fill: darken($fc-light, 30%);
+    }
 }
 
 .dropdown-selectText {
@@ -31,6 +39,12 @@
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
     text-align: right;
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    transition: all linear 0.3s;
+
 }
 
 .dropdown-selectAngle {

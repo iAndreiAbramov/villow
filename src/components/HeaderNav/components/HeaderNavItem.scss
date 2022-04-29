@@ -1,0 +1,27 @@
+@import '../../../variables';
+
+.nav-item {
+    font-family: $ff-regular;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.19;
+    color: $fc-light;
+    white-space: nowrap;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    text-align: right;
+
+    & a {
+        -webkit-transition: all linear 0.3s;
+        -moz-transition: all linear 0.3s;
+        -ms-transition: all linear 0.3s;
+        -o-transition: all linear 0.3s;
+        transition: all linear 0.3s;
+        color: $fc-light;
+
+        &:hover {
+            color: darken($fc-light, 30%);
+        }
+    }
+}

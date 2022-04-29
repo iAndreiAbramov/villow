@@ -1,7 +1,7 @@
 @import "variables";
 
 $header-height: 96px;
-$page-padding: 30px;
+$page-padding: 20px;
 
 body {
     margin: 0;
@@ -55,9 +55,10 @@ a {
     height: $header-height;
     max-width: 100%;
 
+    background-color: $bgc-dark;
+
     //todo: delete
     border: 1px solid lightsalmon;
-    background: darkgray;
 }
 
 .main-container {
@@ -74,9 +75,10 @@ a {
     height: 220px;
     max-width: 100%;
 
+    background-color: $bgc-dark;
+
     //todo: delete
     border: 1px solid lightsalmon;
-    background: darkgray;
 }
 
 .container {
@@ -95,7 +97,13 @@ a {
 .header {
     display: flex;
     align-items: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header-logo {
+    width: 185px;
+    flex: 0 0 auto;
 }
 
 .footer {
