@@ -1,4 +1,4 @@
-import React, { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import React, { MouseEventHandler, RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { motion } from 'framer-motion';
 import { useSliderWidth } from 'hooks/useSliderWidth';
@@ -21,7 +21,8 @@ export const PromoSliderPrimary: React.FC<IPromoSliderFramerProps> = ({ slides =
     const [animateValue, setAnimateValue] = useState(0);
     const [isLocked, setIsLocked] = useState(true);
 
-    const handlePrevClick = useCallback(() => {
+    const handlePrevClick: MouseEventHandler = useCallback((evt) => {
+        evt.preventDefault();
         setCurrentSlide((current) => {
             if (current > 1) {
                 return current - 1;
@@ -30,14 +31,18 @@ export const PromoSliderPrimary: React.FC<IPromoSliderFramerProps> = ({ slides =
         });
     }, []);
 
-    const handleNextClick = useCallback(() => {
-        setCurrentSlide((current) => {
-            if (current < slides.length) {
-                return current + 1;
-            }
-            return current;
-        });
-    }, [slides.length]);
+    const handleNextClick: MouseEventHandler = useCallback(
+        (evt) => {
+            evt.preventDefault();
+            setCurrentSlide((current) => {
+                if (current < slides.length) {
+                    return current + 1;
+                }
+                return current;
+            });
+        },
+        [slides.length],
+    );
 
     const handlePaginationClick = useCallback((order: number) => {
         setCurrentSlide(order);

@@ -1,29 +1,66 @@
 import { promoSlides } from 'constants/promo-slides';
+import { promoTabs } from 'constants/promo-tabs';
+import { QueryParams } from 'constants/QueryParams';
 
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import { PromoSliderPrimary } from 'containers/PromoSliderPrimary';
+import { motion } from 'framer-motion';
+import { useQuery } from 'hooks/useQuery';
+import { useTabData } from 'hooks/useTabData';
 import { ReactComponent as AppStoreIcon } from 'icons/app-store.svg';
+
+import { PromoTabs } from 'components/PromoTabs';
 
 import './HomePromoSection.scss';
 
 const CnPromo = cn('promo');
 
-const BG_STUB = 'assets/bg/1-widgy.jpg';
-
 export const HomePromoSection: React.FC = () => {
+    const query = useQuery();
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const [activeTabId, setActiveTabId] = useState<string | null>(null);
+
+    const { title, subtitle, description, bgImage } = useTabData({ tabData: promoTabs, activeTabId: activeTabId });
+
+    const handleTabClick = useCallback((tabId: string) => {
+        setActiveTabId(tabId);
+    }, []);
+
+    useEffect(() => {
+        if (!activeTabId) {
+            setActiveTabId(query.get(QueryParams.Tab));
+        }
+        if (activeTabId) {
+            query.set(QueryParams.Tab, activeTabId);
+            navigate({
+                pathname,
+                search: query.toString(),
+            });
+        }
+    }, [query, navigate, pathname, activeTabId]);
+
     return (
-        <section className={CnPromo()} style={{ backgroundImage: `url(${BG_STUB})` }}>
-            <div className={`${CnPromo('contentWrapper')} container`}>
+        <motion.section
+            className={CnPromo()}
+            style={{ backgroundImage: `url(${bgImage})` }}
+            initial={{
+                backgroundColor: '#090909',
+                opacity: 0.4,
+            }}
+            animate={{
+                opacity: 1,
+            }}
+        >
+            <div className={`${CnPromo('contentWrapper')} container`} onDoubleClick={(evt) => evt.preventDefault()}>
                 <div className={CnPromo('row')}>
                     <div className={CnPromo('textGroup')}>
                         <div className={CnPromo('text')}>
-                            <h2 className={CnPromo('title')}>Widgy</h2>
-                            <span className={CnPromo('subtitle')}>Your desktop - your style</span>
-                            <p className={CnPromo('description')}>
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum deleniti atque corrupti quos d
-                            </p>
+                            <h2 className={CnPromo('title')}>{title}</h2>
+                            <span className={CnPromo('subtitle')}>{subtitle}</span>
+                            <p className={CnPromo('description')}>{description}</p>
                         </div>
                         <div className={CnPromo('links')}>
                             <a href="https://www.apple.com/ru/app-store/">
@@ -38,8 +75,10 @@ export const HomePromoSection: React.FC = () => {
                         <PromoSliderPrimary slides={promoSlides} />
                     </div>
                 </div>
-                <div className={CnPromo('tabs')}>tabs</div>
+                <div className={CnPromo('tabs')}>
+                    <PromoTabs tabs={promoTabs} activeTabId={activeTabId} handleTabClick={handleTabClick} />
+                </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
