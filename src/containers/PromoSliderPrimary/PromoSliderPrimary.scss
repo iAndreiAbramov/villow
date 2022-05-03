@@ -1,0 +1,92 @@
+@import '../../variables';
+
+.promoSlider {
+    display: grid;
+    grid-template-rows: minmax(280px, 1fr) auto;
+    grid-template-columns: auto 1fr auto;
+    -webkit-column-gap: 24px;
+    -moz-column-gap: 24px;
+    column-gap: 24px;
+    row-gap: 12px;
+}
+
+.promoSlider-arrowLeft {
+    grid-column: 1/2;
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    &_disabled {
+        cursor: auto;
+        & svg path {
+            fill: darken($bgc-light, 75%)
+        }
+    }
+}
+
+.promoSlider-sliderWindow {
+    position: relative;
+    overflow-x: hidden;
+    grid-column: 2/3;
+    justify-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.promoSlider-arrowRight {
+    grid-column: 3/-1;
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    &_disabled {
+        cursor: auto;
+        & svg path {
+            fill: darken($bgc-light, 75%)
+        }
+    }
+}
+
+.promoSlider-pagination {
+    grid-column: 1 / -1;
+    grid-row: 2/-1;
+    justify-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.promoSlider-paginationItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.promoSlider-innerWrapper {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+}
+
+.promoSlider-slide {
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+    max-width: 100%;
+}

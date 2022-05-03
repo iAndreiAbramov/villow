@@ -1,5 +1,8 @@
+import { promoSlides } from 'constants/promo-slides';
+
 import React from 'react';
 import { cn } from '@bem-react/classname';
+import { PromoSliderPrimary } from 'containers/PromoSliderPrimary';
 import { ReactComponent as AppStoreIcon } from 'icons/app-store.svg';
 
 import './HomePromoSection.scss';
@@ -31,7 +34,9 @@ export const HomePromoSection: React.FC = () => {
                             </a>
                         </div>
                     </div>
-                    <div className={CnPromo('slider')}>slider</div>
+                    <div className={CnPromo('sliderWrapper')}>
+                        <PromoSliderPrimary slides={promoSlides} />
+                    </div>
                 </div>
                 <div className={CnPromo('tabs')}>tabs</div>
             </div>
