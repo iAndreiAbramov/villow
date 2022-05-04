@@ -1,5 +1,4 @@
 import { AppRoute } from 'constants/AppRoute';
-import { FooterDropdownOptions } from 'constants/dropdown-options';
 import { HeaderNavItems } from 'constants/nav-items';
 
 import React from 'react';
@@ -12,8 +11,7 @@ import { EulaPage } from 'pages/EulaPage';
 import { HomePage } from 'pages/HomePage';
 import { PolicyPage } from 'pages/PolicyPage';
 
-import { Dropdown } from 'components/Dropdown';
-import { DropdownDirection } from 'components/Dropdown/Dropdown.types';
+import { FooterContent } from 'components/FooterContent/FooterContent';
 import { HeaderNav } from 'components/HeaderNav';
 
 export const App: React.FC = () => {
@@ -33,10 +31,7 @@ export const App: React.FC = () => {
                 </Routes>
             </MainContainer>
             <FooterContainer>
-                <footer className="footer container">
-                    <h2>Footer</h2>
-                    <Dropdown options={FooterDropdownOptions} direction={DropdownDirection.Up} />
-                </footer>
+                <FooterContent />
             </FooterContainer>
         </BrowserRouter>
     );

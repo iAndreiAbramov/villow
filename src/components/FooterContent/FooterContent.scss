@@ -1,0 +1,101 @@
+@import '../../variables';
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    max-width: $max-content-width;
+    margin: 0 auto;
+    padding-left: $page-padding;
+    padding-right: $page-padding;
+
+    color: $fc-light;
+
+    & .dropdown-select {
+        width: min-content;
+        max-width: 150px;
+        & .dropdown-selectText {
+            text-align: left;
+        }
+    }
+
+    //todo: delete
+    border: 1px solid white;
+}
+
+.footer-left {
+    flex: 1 1 240px;
+}
+
+.footer-copyright {
+    margin: 0 0 13px;
+
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.footer-text {
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.footer-right {
+    flex: 1 1 240px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-socialLink {
+    flex: 0 0 auto;
+}
+
+.footer-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-link {
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 2.62;
+    color: $fc-orange;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    &:hover {
+        color: darken($fc-orange, 20%);
+    }
+}
