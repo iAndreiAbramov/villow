@@ -6,6 +6,11 @@ body {
     font-family: $ff-regular;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    //todo: delete
+    & * {
+        border: none !important;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,9 +69,17 @@ a {
     margin: 0 auto;
 
     //todo: delete
-    min-height: 78vh;
     border: 1px solid lightsalmon;
     background: $bgc-light;
+}
+
+.content-container {
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: 70vh;
+
+    //todo: delete
+    border: 1px solid greenyellow;
 }
 
 .footer-container {
@@ -83,7 +96,7 @@ a {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    max-width: 960px;
+    max-width: $max-content-width;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
