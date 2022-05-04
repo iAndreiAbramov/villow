@@ -9,7 +9,7 @@ export const EulaPage: React.FC = () => {
             <h2>Content</h2>
             <p>text text text</p>
             <Link to={AppRoute.Home()}>Home page</Link>
-            <Link to={AppRoute.Policy()}>Policy page</Link>
+            <Link to={AppRoute.Privacy()}>Policy page</Link>
         </>
     );
 };

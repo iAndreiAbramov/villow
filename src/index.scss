@@ -27,7 +27,7 @@ img {
     max-width: 100%;
 }
 
-ul {
+ul, ol {
     margin: 0;
     padding: 0;
 }
@@ -42,6 +42,10 @@ a {
 
 #root {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     box-sizing: border-box;
     min-height: 100vh;
@@ -66,7 +70,6 @@ a {
 
 .main-container {
     max-width: 100%;
-    margin: 0 auto;
 
     //todo: delete
     border: 1px solid lightsalmon;
@@ -119,4 +122,45 @@ a {
 .header-logo {
     width: 185px;
     flex: 0 0 auto;
+}
+
+.content {
+    margin-top: $header-height;
+    padding: 60px $page-padding 60px;
+
+    color: $fc-dark;
+}
+
+.content-textBlock {
+    margin-bottom: 30px;
+}
+
+.content-title {
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.31;
+}
+
+.content-subtitle {
+    margin-bottom: 10px;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+}
+
+.content-text {
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+
+    &:not(&:last-child) {
+        margin-bottom: 20px;
+    }
 }

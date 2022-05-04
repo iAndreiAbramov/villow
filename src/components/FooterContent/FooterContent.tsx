@@ -30,7 +30,7 @@ export const FooterContent: React.FC = () => {
                 <div className={CnFooter('row')}>
                     <Dropdown options={dropdownOptions} direction={DropdownDirection.Up} />
                     <div className={CnFooter('links')}>
-                        <Link className={CnFooter('link')} to={AppRoute.Policy()}>
+                        <Link className={CnFooter('link')} to={AppRoute.Privacy()}>
                             Privacy policy
                         </Link>
                         <Link className={CnFooter('link')} to={AppRoute.Eula()}>

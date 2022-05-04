@@ -1,5 +1,5 @@
 export const AppRoute = {
     Home: (): string => '/',
-    Policy: (): string => '/policy',
+    Privacy: (): string => '/privacy',
     Eula: (): string => '/eula',
 };
