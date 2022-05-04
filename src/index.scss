@@ -1,5 +1,9 @@
 @import "variables";
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
 
@@ -46,6 +50,8 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    scroll-behavior: smooth;
 
     box-sizing: border-box;
     min-height: 100vh;
@@ -126,13 +132,15 @@ a {
 
 .content {
     margin-top: $header-height;
-    padding: 60px $page-padding 60px;
+    padding: 60px 0;
 
     color: $fc-dark;
 }
 
 .content-textBlock {
-    margin-bottom: 30px;
+    &:not(&:last-child) {
+        margin-bottom: 30px;
+    }
 }
 
 .content-title {

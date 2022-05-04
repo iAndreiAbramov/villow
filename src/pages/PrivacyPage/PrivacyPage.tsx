@@ -17,7 +17,7 @@ export const PrivacyPage: React.FC = () => {
                         <div className={CnContent('text')}>
                             <span>
                                 This document defines the policy the Right holder in relation to the processing of
-                                personal data of the users of the website{' '}
+                                personal data of the users of the website
                             </span>
                             <a href="https://villow.studio/"> https://villow.studio/ </a>
                             <span>
@@ -31,7 +31,7 @@ export const PrivacyPage: React.FC = () => {
                         </div>
                     </div>
                     <div className={CnContent('textBlock')}>
-                        <div className={CnContent('subtitle')}>Terms shall mean:</div>
+                        <div className={CnContent('text')}>Terms shall mean:</div>
                         <p className={CnContent('text')}>
                             <b>Personal Data</b> - A set of private data and/or non-personally identifiable information
                             about a User.
