@@ -10,11 +10,6 @@ body {
     font-family: $ff-regular;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    //todo: delete
-    & * {
-        border: none !important;
-    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -69,26 +64,16 @@ a {
     max-width: 100%;
 
     background-color: $bgc-dark;
-
-    //todo: delete
-    border: 1px solid lightsalmon;
 }
 
 .main-container {
     max-width: 100%;
-
-    //todo: delete
-    border: 1px solid lightsalmon;
-    background: $bgc-light;
 }
 
 .content-container {
     max-width: 100%;
     margin: 0 auto;
     min-height: 70vh;
-
-    //todo: delete
-    border: 1px solid greenyellow;
 }
 
 .footer-container {
@@ -113,9 +98,6 @@ a {
     padding-left: $page-padding;
     padding-right: $page-padding;
 
-    //todo: delete
-    border-left: 1px solid darkred;
-    border-right: 1px solid darkred;
 }
 
 .header {

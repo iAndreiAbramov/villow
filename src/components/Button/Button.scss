@@ -28,6 +28,8 @@
     -o-transition: all linear 0.3s;
     transition: all linear 0.3s;
 
+    cursor: pointer;
+
     &:hover {
         background-color: $bgc-orange-hovered;
     }

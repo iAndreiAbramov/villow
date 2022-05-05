@@ -7,6 +7,7 @@ import { FooterContainer } from 'containers/FooterContainer';
 import { HeaderContainer } from 'containers/HeaderContainer';
 import { MainContainer } from 'containers/MainContainer';
 import { ReactComponent as Logo } from 'icons/logo.svg';
+import { ContactUsPage } from 'pages/ContactUsPage';
 import { EulaPage } from 'pages/EulaPage';
 import { HomePage } from 'pages/HomePage';
 import { PrivacyPage } from 'pages/PrivacyPage';
@@ -30,6 +31,7 @@ export const App: React.FC = () => {
                     <Route path={AppRoute.Home()} element={<HomePage />} />
                     <Route path={AppRoute.Privacy()} element={<PrivacyPage />} />
                     <Route path={AppRoute.Eula()} element={<EulaPage />} />
+                    <Route path={AppRoute.Contact()} element={<ContactUsPage />} />
                 </Routes>
             </MainContainer>
             <FooterContainer>

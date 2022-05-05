@@ -8,9 +8,6 @@
     background-repeat: no-repeat;
     background-color: $bgc-dark;
 
-    //todo: delete
-    color: $fc-light;
-
     & div {
         border: 1px solid blue;
     }
@@ -92,9 +89,6 @@
     flex: 1 0 auto;
     min-width: 280px;
     max-width: 50%;
-
-    //todo: delete
-    min-height: 400px;
 }
 
 .promo-tabs {

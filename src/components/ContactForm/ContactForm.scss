@@ -1,0 +1,19 @@
+@import '../../variables';
+
+.contactForm {
+    margin: $header-height auto 0;
+    padding: 70px 0 80px;
+    max-width: 720px;
+
+    color: $fc-dark;
+}
+
+.contactForm-title {
+    margin-bottom: 20px;
+
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+}
