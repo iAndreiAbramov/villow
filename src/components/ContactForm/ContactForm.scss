@@ -8,6 +8,16 @@
     color: $fc-dark;
 }
 
+.contactForm-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
+
 .contactForm-title {
     margin-bottom: 20px;
 
@@ -16,4 +26,99 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 42px;
+}
+
+.input {
+    flex: 1 1 280px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-labelText {
+    display: flex;
+    gap: 4px;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    color: $fc-dark;
+}
+
+.input-asterisk {
+    color: $fc-red;
+}
+
+.input-input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 15px;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    color: $fc-dark;
+
+    background: $bgc-light;
+    border: $border-grey;
+    border-radius: 4px;
+
+    &:focus {
+        outline: $border-grey;
+    }
+
+    &_error {
+        border: $border-red;
+    }
+}
+
+.input-input_textArea {
+    width: 100%;
+    height: 140px;
+    padding: 8px 15px;
+    resize: none;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.triangle {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+}
+
+.input-input_select {
+    min-width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+
+    & > option {
+        white-space: normal;
+        font-family: $ff-regular;
+        font-weight: 300;
+        font-size: 16px;
+        color: $fc-dark;
+    }
+}
+
+.input-error {
+    min-height: 14px;
+
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.14;
+    color: $fc-red;
 }

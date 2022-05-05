@@ -4,27 +4,41 @@ import { cn } from '@bem-react/classname';
 
 import { IInputProps } from './Input.types';
 
-import './Input.scss';
-
 const CnInput = cn('input');
 
-export const Input: React.FC<IInputProps> = ({ label, type = 'text', name, placeholder, required = false, error }) => {
+export const Input: React.FC<IInputProps> = ({
+    label,
+    type = 'text',
+    name,
+    placeholder,
+    required = false,
+    hasError,
+    isTextarea,
+}) => {
     return (
         <Field name={name}>
-            {() => (
+            {({ input }) => (
                 <label className={CnInput()}>
-                    <span className={CnInput('labelText')}>
-                        {label}
-                        {!!required && <span className={CnInput('asterisk')}> *</span>}
-                    </span>
-                    <input
-                        className={CnInput('input', { error: !!error })}
-                        type={type}
-                        name={name}
-                        placeholder={placeholder}
-                        required={required}
-                    />
-                    <div className={CnInput('error')}>{!!error && error}</div>
+                    <div className={CnInput('labelText')}>
+                        <span>{label}</span>
+                        {required && <span className={CnInput('asterisk')}>*</span>}
+                    </div>
+                    {isTextarea ? (
+                        <textarea
+                            {...input}
+                            className={CnInput('input', { error: hasError, textArea: true })}
+                            placeholder={placeholder}
+                            required={required}
+                        />
+                    ) : (
+                        <input
+                            {...input}
+                            className={CnInput('input', { error: hasError })}
+                            type={type}
+                            placeholder={placeholder}
+                            required={required}
+                        />
+                    )}
                 </label>
             )}
         </Field>

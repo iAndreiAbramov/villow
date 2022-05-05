@@ -4,5 +4,6 @@ export interface IInputProps {
     name: string;
     placeholder?: string;
     required?: boolean;
-    error?: string;
+    hasError?: boolean;
+    isTextarea?: boolean;
 }
