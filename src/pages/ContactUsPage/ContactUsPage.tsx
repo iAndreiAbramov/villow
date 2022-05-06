@@ -5,10 +5,13 @@ import { ContactForm } from 'components/ContactForm';
 
 export const ContactUsPage: React.FC = () => {
     return (
-        <ContentContainer>
-            <div className="container">
-                <ContactForm />
-            </div>
-        </ContentContainer>
+        <>
+            <div className="contactUs-promo" />
+            <ContentContainer>
+                <div className="container">
+                    <ContactForm />
+                </div>
+            </ContentContainer>
+        </>
     );
 };

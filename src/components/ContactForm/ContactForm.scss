@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .contactForm {
-    margin: $header-height auto 0;
+    margin: 0 auto;
     padding: 70px 0 80px;
     max-width: 720px;
 
@@ -26,6 +26,23 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 42px;
+}
+
+.contactForm-agreement {
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.contactForm-link {
+    margin: 0 0.25em;
+    color: $fc-orange;
+}
+
+.contactForm-button {
+    margin-left: auto;
 }
 
 .input {
