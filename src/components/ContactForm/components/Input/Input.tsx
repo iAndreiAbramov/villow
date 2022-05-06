@@ -6,18 +6,10 @@ import { IInputProps } from './Input.types';
 
 const CnInput = cn('input');
 
-export const Input: React.FC<IInputProps> = ({
-    label,
-    type = 'text',
-    name,
-    placeholder,
-    required = false,
-    hasError,
-    isTextarea,
-}) => {
+export const Input: React.FC<IInputProps> = ({ label, name, placeholder, required = false, isTextarea }) => {
     return (
         <Field name={name}>
-            {({ input }) => (
+            {({ input, meta }) => (
                 <label className={CnInput()}>
                     <div className={CnInput('labelText')}>
                         <span>{label}</span>
@@ -26,17 +18,20 @@ export const Input: React.FC<IInputProps> = ({
                     {isTextarea ? (
                         <textarea
                             {...input}
-                            className={CnInput('input', { error: hasError, textArea: true })}
+                            className={CnInput('input', {
+                                error: meta.invalid && meta.submitFailed && !meta.dirtySinceLastSubmit,
+                                textArea: true,
+                            })}
                             placeholder={placeholder}
-                            required={required}
                         />
                     ) : (
                         <input
                             {...input}
-                            className={CnInput('input', { error: hasError })}
-                            type={type}
+                            className={CnInput('input', {
+                                error: meta.invalid && meta.submitFailed && !meta.dirtySinceLastSubmit,
+                            })}
+                            type="text"
                             placeholder={placeholder}
-                            required={required}
                         />
                     )}
                 </label>

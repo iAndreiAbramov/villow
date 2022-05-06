@@ -15,6 +15,7 @@ import { Button } from 'components/Button';
 
 import { Input } from './components/Input';
 import { Select } from './components/Select';
+import { validateForm } from './utils/validate-form';
 
 import './ContactForm.scss';
 
@@ -36,15 +37,15 @@ export const ContactForm: React.FC = () => {
     }, []);
 
     return (
-        <Form onSubmit={onSubmit}>
-            {({ handleSubmit }) => (
+        <Form onSubmit={onSubmit} validate={validateForm}>
+            {({ handleSubmit, submitFailed, hasValidationErrors, dirtySinceLastSubmit }) => (
                 <form className={CnForm()} onSubmit={handleSubmit}>
                     <h2 className={CnForm('title')}>Contact Us</h2>
                     <div className={CnForm('row')}>
-                        <Input type="text" label="Name" name="name" required placeholder="Enter your name" />
+                        <Input label="Name" name="name" required placeholder="Enter your name" />
                     </div>
                     <div className={CnForm('row')}>
-                        <Input type="email" label="Email" name="email" required placeholder="Enter your email" />
+                        <Input label="Email" name="email" required placeholder="Enter your email" />
                         <Select name="country" label="Country" options={countriesList} />
                     </div>
                     <div className={CnForm('row')}>
@@ -56,14 +57,7 @@ export const ContactForm: React.FC = () => {
                         </div>
                     )}
                     <div className={CnForm('row')}>
-                        <Input
-                            type={'text'}
-                            label="Message"
-                            name="message"
-                            isTextarea
-                            required
-                            placeholder="Type your message"
-                        />
+                        <Input label="Message" name="message" isTextarea placeholder="Type your message" required />
                     </div>
                     <div className={CnForm('row')}>
                         <span className={CnForm('agreement')}>
@@ -75,7 +69,11 @@ export const ContactForm: React.FC = () => {
                         </span>
                     </div>
                     <div className={CnForm('row')}>
-                        <Button customClass={CnForm('button')} type="submit">
+                        <Button
+                            customClass={CnForm('button', { disabled: submitFailed && hasValidationErrors })}
+                            type="submit"
+                            disabled={submitFailed && hasValidationErrors && !dirtySinceLastSubmit}
+                        >
                             <Plane />
                             Send
                         </Button>

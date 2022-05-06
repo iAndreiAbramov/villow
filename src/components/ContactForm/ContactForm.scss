@@ -45,6 +45,16 @@
     margin-left: auto;
 }
 
+.contactForm-button_disabled {
+    background-color: grayscale($bgc-orange);
+
+    cursor: auto;
+
+    &:hover {
+        background-color: grayscale($bgc-orange);
+    }
+}
+
 .input {
     flex: 1 1 280px;
 

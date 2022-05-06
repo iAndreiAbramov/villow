@@ -17,7 +17,7 @@ export const Select: React.FC<ISelectProps> = ({ name, label, required = false, 
                         {required && <span className={CnInput('asterisk')}>*</span>}
                     </div>
                     <div className="select-wrapper">
-                        <select className={CnInput('input', { select: true })} required={required} {...input}>
+                        <select className={CnInput('input', { select: true })} {...input}>
                             {options.map((item) => (
                                 <option defaultChecked={false} value={item} key={item}>
                                     {item}
