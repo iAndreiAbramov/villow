@@ -10,7 +10,7 @@ const CnContentArticle = cn('contentArticle');
 
 export const HomePageContent: React.FC = () => {
     return (
-        <>
+        <div className="homeContent">
             <motion.article
                 className={`${CnContentArticle()}`}
                 id={ABOUT_ANCHOR}
@@ -85,6 +85,6 @@ export const HomePageContent: React.FC = () => {
                     </div>
                 </div>
             </motion.article>
-        </>
+        </div>
     );
 };
