@@ -1,10 +1,12 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export const useCloseByEsc = (cb: Dispatch<SetStateAction<boolean>>): void => {
+export const useCloseByEsc = (cb: () => void): void => {
     useEffect(() => {
         const closePopupByEsc = (evt: KeyboardEvent) => {
             if (evt.key === 'Escape') {
-                cb(false);
+                cb();
+                document.body.style.overflow = '';
+                document.body.style.marginRight = '';
             }
         };
         document.addEventListener('keydown', closePopupByEsc);

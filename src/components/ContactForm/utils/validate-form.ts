@@ -1,3 +1,5 @@
+import { Theme } from 'constants/themesList';
+
 import { IFormValues } from 'types/form.types';
 
 export const EMAIL_PATTERN = new RegExp(
@@ -27,7 +29,7 @@ export const validateForm = ({
         errors.email = true;
     }
 
-    if (!theme) {
+    if (!theme || theme === Theme.Select) {
         errors.theme = true;
     }
 

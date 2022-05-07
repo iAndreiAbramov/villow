@@ -10,14 +10,20 @@ const CnInput = cn('input');
 export const Select: React.FC<ISelectProps> = ({ name, label, required = false, options }) => {
     return (
         <Field name={name}>
-            {({ input }) => (
+            {({ input, meta }) => (
                 <label className={CnInput()}>
                     <div className={CnInput('labelText')}>
                         <span>{label}</span>
                         {required && <span className={CnInput('asterisk')}>*</span>}
                     </div>
                     <div className="select-wrapper">
-                        <select className={CnInput('input', { select: true })} {...input}>
+                        <select
+                            className={CnInput('input', {
+                                select: true,
+                                error: meta.invalid && meta.submitFailed && !meta.dirtySinceLastSubmit,
+                            })}
+                            {...input}
+                        >
                             {options.map((item) => (
                                 <option defaultChecked={false} value={item} key={item}>
                                     {item}

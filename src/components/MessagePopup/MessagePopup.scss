@@ -1,0 +1,65 @@
+@import '../../variables';
+
+.messagePopup {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: -10%;
+    right: -10%;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.messagePopup-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 24px 45px 45px;
+    max-width: 360px;
+
+    background-color: $bgc-light;
+    border-radius: 16px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.messagePopup-title {
+    margin-bottom: 30px;
+
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.31;
+    text-align: center;
+    color: $fc-dark;
+}
+
+.messagePopup-imageWrapper {
+    margin-bottom: 20px;
+    width: 114px;
+}
+
+.messagePopup-message {
+    font-family: $ff-regular;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: center;
+    color: $fc-dark;
+}

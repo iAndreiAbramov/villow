@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { cn } from '@bem-react/classname';
-import { useCloseByClick } from 'hooks/useCloseByClick';
 import { useCloseByEsc } from 'hooks/useCloseByEsc';
+import { useCloseByOuterClick } from 'hooks/useCloseByOuterClick';
 import { ReactComponent as Angle } from 'icons/angle.svg';
 
 import { DropdownItem } from './components';
@@ -37,8 +37,12 @@ export const Dropdown: React.FC<IDropdownProps> = ({
         setAreOptionsShown(false);
     }, []);
 
-    useCloseByEsc(setAreOptionsShown);
-    useCloseByClick(selectRef, setAreOptionsShown);
+    const handleDropdownClose = useCallback(() => {
+        setAreOptionsShown(false);
+    }, []);
+
+    useCloseByEsc(handleDropdownClose);
+    useCloseByOuterClick(selectRef, handleDropdownClose);
 
     return (
         <div className={CnDropdown()}>

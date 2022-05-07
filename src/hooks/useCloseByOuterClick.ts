@@ -1,11 +1,11 @@
 import { RefObject, useEffect } from 'react';
 
-export const useCloseByClick = (ref: RefObject<HTMLElement>, cb: () => void): void => {
+export const useCloseByOuterClick = (ref: RefObject<HTMLElement>, cb: () => void): void => {
     useEffect(() => {
-        const closeByClick = () => {
-            cb();
-            document.body.style.overflow = '';
-            document.body.style.marginRight = '';
+        const closeByClick = (evt: MouseEvent) => {
+            if (ref.current && !ref.current.contains(evt.target as Node)) {
+                cb();
+            }
         };
         document.addEventListener('click', closeByClick);
         return () => {
