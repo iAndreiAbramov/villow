@@ -1,1 +1,1 @@
-export * from './PromoSliderPrimary';
+export * from './PromoSliderSmall';

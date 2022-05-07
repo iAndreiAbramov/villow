@@ -1,20 +1,25 @@
-import { IPromoTab } from 'types/promo-tabs.types';
+import { IPromoApp } from 'types/promo-tabs.types';
 
-const TAB_DATA_STUB = {
+const TAB_DATA_STUB: IPromoApp = {
     id: 0,
+    platform: 'mac',
+    appName: '',
     title: '',
     subtitle: '',
     description: '',
     bgImage: '',
     icon: '',
+    storeIcon: '',
+    bigSlides: [],
+    smallSlides: [],
 };
 
 export const useTabData = ({
     tabData,
     activeTabId,
 }: {
-    tabData: IPromoTab[];
+    tabData: IPromoApp[];
     activeTabId: string | null;
-}): IPromoTab => {
+}): IPromoApp => {
     return tabData.find((item) => String(item.id) === activeTabId) || TAB_DATA_STUB;
 };

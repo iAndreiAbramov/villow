@@ -1,11 +1,10 @@
-import { promoSlides } from 'constants/promo-slides';
-import { promoTabs } from 'constants/promo-tabs';
+import { promoApps } from 'constants/promo-apps';
 import { QueryParams } from 'constants/QueryParams';
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
-import { PromoSliderPrimary } from 'containers/PromoSliderPrimary';
+import { PromoSliderSmall } from 'containers/PromoSliderPrimary';
 import { motion } from 'framer-motion';
 import { useQuery } from 'hooks/useQuery';
 import { useTabData } from 'hooks/useTabData';
@@ -23,7 +22,10 @@ export const HomePromoSection: React.FC = () => {
     const { pathname } = useLocation();
     const [activeTabId, setActiveTabId] = useState<string | null>(null);
 
-    const { title, subtitle, description, bgImage } = useTabData({ tabData: promoTabs, activeTabId: activeTabId });
+    const { title, subtitle, description, bgImage, smallSlides } = useTabData({
+        tabData: promoApps,
+        activeTabId: activeTabId,
+    });
 
     const handleTabClick = useCallback((tabId: string) => {
         setActiveTabId(tabId);
@@ -72,11 +74,11 @@ export const HomePromoSection: React.FC = () => {
                         </div>
                     </div>
                     <div className={CnPromo('sliderWrapper')}>
-                        <PromoSliderPrimary slides={promoSlides} />
+                        <PromoSliderSmall slides={smallSlides} />
                     </div>
                 </div>
                 <div className={CnPromo('tabs')}>
-                    <PromoTabs tabs={promoTabs} activeTabId={activeTabId} handleTabClick={handleTabClick} />
+                    <PromoTabs tabs={promoApps} activeTabId={activeTabId} handleTabClick={handleTabClick} />
                 </div>
             </div>
         </motion.section>
