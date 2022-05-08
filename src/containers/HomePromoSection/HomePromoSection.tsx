@@ -1,7 +1,7 @@
 import { promoApps } from 'constants/promo-apps';
-import { QueryParams } from 'constants/QueryParams';
+import { QueryParam } from 'constants/QueryParam';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import { PromoSliderSmall } from 'containers/PromoSliderPrimary';
@@ -22,31 +22,21 @@ export const HomePromoSection: React.FC = () => {
     const query = useQuery();
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const [activeTabId, setActiveTabId] = useState<string | null>(null);
     const [currentSlide, setCurrentSlide] = useState(1);
 
-    const { title, subtitle, description, bgImage, smallSlides, platform, storeLink } = useTabData({
-        tabData: promoApps,
-        activeTabId: activeTabId,
-    });
+    const { title, subtitle, description, bgImage, smallSlides, platform, storeLink } = useTabData(promoApps);
 
-    const handleTabClick = useCallback((tabId: string) => {
-        setActiveTabId(tabId);
-        setCurrentSlide(1);
-    }, []);
-
-    useEffect(() => {
-        if (!activeTabId) {
-            setActiveTabId(query.get(QueryParams.Tab));
-        }
-        if (activeTabId) {
-            query.set(QueryParams.Tab, activeTabId);
+    const handleTabClick = useCallback(
+        (tabId: string) => {
+            query.set(QueryParam.Tab, tabId);
             navigate({
                 pathname,
                 search: query.toString(),
             });
-        }
-    }, [query, navigate, pathname, activeTabId]);
+            setCurrentSlide(1);
+        },
+        [navigate, query, pathname],
+    );
 
     return (
         <motion.section
@@ -82,7 +72,7 @@ export const HomePromoSection: React.FC = () => {
                     </div>
                 </div>
                 <div className={CnPromo('tabs')}>
-                    <PromoTabs tabs={promoApps} activeTabId={activeTabId} handleTabClick={handleTabClick} />
+                    <PromoTabs tabs={promoApps} handleTabClick={handleTabClick} />
                 </div>
             </div>
         </motion.section>

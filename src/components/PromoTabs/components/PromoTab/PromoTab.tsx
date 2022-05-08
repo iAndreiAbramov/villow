@@ -22,9 +22,9 @@ const variants = {
 };
 
 export const PromoTab: React.FC<IPromoTabProps> = ({ data, isActive, handleTabClick }) => {
-    const { icon, id } = data;
+    const { icon, id, title } = data;
     return (
-        <div className={CnTab()} onClick={() => handleTabClick(String(id))}>
+        <div className={CnTab()} onClick={() => handleTabClick(String(id))} title={title}>
             <img src={icon} alt="tab-icon" width="82" height="82" draggable={false} />
             <motion.div
                 variants={variants}

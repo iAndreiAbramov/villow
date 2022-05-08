@@ -1,5 +1,4 @@
 export interface IDropdownOption {
-    name: string;
-    href: string;
+    appName: string;
     id: number;
 }

@@ -1,7 +1,13 @@
+import { AppRoute } from 'constants/AppRoute';
+import { QueryParam } from 'constants/QueryParam';
+
 import React, { useCallback, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
+import { useActiveOption } from 'hooks/useActiveOption';
 import { useCloseByEsc } from 'hooks/useCloseByEsc';
 import { useCloseByOuterClick } from 'hooks/useCloseByOuterClick';
+import { useQuery } from 'hooks/useQuery';
 import { ReactComponent as Angle } from 'icons/angle.svg';
 
 import { DropdownItem } from './components';
@@ -9,33 +15,32 @@ import { DropdownDirection, IDropdownProps } from './Dropdown.types';
 
 import './Dropdown.scss';
 
-const FALLBACK_OPTION = {
-    name: '',
-    href: '#',
-    id: 0,
-};
-
 const CnDropdown = cn('dropdown');
 
-export const Dropdown: React.FC<IDropdownProps> = ({
-    options = [FALLBACK_OPTION],
-    defaultName = '',
-    direction = DropdownDirection.Down,
-}) => {
-    const [firstOption] = options;
-    const [activeName, setActiveName] = useState<string>(defaultName || firstOption.name);
+export const Dropdown: React.FC<IDropdownProps> = ({ options = [], direction = DropdownDirection.Down }) => {
+    const query = useQuery();
+    const navigate = useNavigate();
     const [areOptionsShown, setAreOptionsShown] = useState<boolean>(false);
 
     const selectRef = useRef(null);
+
+    const activeOption = useActiveOption(options);
 
     const handleSelectClick = useCallback(() => {
         setAreOptionsShown((current) => !current);
     }, []);
 
-    const handleOptionClick = useCallback((name: string) => {
-        setActiveName(name);
-        setAreOptionsShown(false);
-    }, []);
+    const handleOptionClick = useCallback(
+        (id: string) => {
+            query.set(QueryParam.Tab, id);
+            navigate({
+                pathname: AppRoute.Home(),
+                search: query.toString(),
+            });
+            setAreOptionsShown(false);
+        },
+        [query, navigate],
+    );
 
     const handleDropdownClose = useCallback(() => {
         setAreOptionsShown(false);
@@ -47,8 +52,8 @@ export const Dropdown: React.FC<IDropdownProps> = ({
     return (
         <div className={CnDropdown()}>
             <div ref={selectRef} className={CnDropdown('select')} onClick={handleSelectClick}>
-                <span className={CnDropdown('selectText')} title={activeName}>
-                    {activeName}
+                <span className={CnDropdown('selectText')} title={activeOption.appName}>
+                    {activeOption.appName}
                 </span>
                 <Angle className={CnDropdown('selectAngle', { reversed: areOptionsShown })} />
             </div>
