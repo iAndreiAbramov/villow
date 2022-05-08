@@ -12,7 +12,7 @@ export const promoApps: IPromoApp[] = [
             'Widgetter is a direct line to upscaling your desktop into a work station perfectly tailored to your needs. Huge collection of widgets and wallpapers will meet every user’s expectations. Start building a customized home screen to have all the key data points and basic functions always remain available at a glance.',
         bgImage: '/assets/bg/widgetter-bg.png',
         icon: '/assets/tab-icons/widgetter-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1553223588',
         bigSlides: [
             '/assets/slides/widgetter/big/01.png',
             '/assets/slides/widgetter/big/02.png',
@@ -44,7 +44,7 @@ export const promoApps: IPromoApp[] = [
             'Audio One is a functional and simple, user friendly audio tool fully adapted for Mac. In short, this is exactly what you were looking for. Audio One is suitable for beginners and experienced sound designers.',
         bgImage: '/assets/bg/audio-one-bg.png',
         icon: '/assets/tab-icons/audio-one-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1589899916',
         bigSlides: [
             '/assets/slides/audio-one-mac/big/01.png',
             '/assets/slides/audio-one-mac/big/02.png',
@@ -70,7 +70,7 @@ export const promoApps: IPromoApp[] = [
             'Audio One is a functional and simple, user friendly audio tool fully adapted for iOS. This software is versatile and ideal for both working with podcasts, lectures, performances, and for creating the coolest ringtones and music tracks.',
         bgImage: '/assets/bg/audio-one-bg.png',
         icon: '/assets/tab-icons/audio-one-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1607950988',
         bigSlides: [
             '/assets/slides/audio-one-ios/big/01.png',
             '/assets/slides/audio-one-ios/big/02.png',
@@ -96,7 +96,7 @@ export const promoApps: IPromoApp[] = [
             'Going for a hike, cycling, swimming or running  – make GPS Sports Tracker  your companion whenever you’re on the move. The app is designed to collect and process the data about the key parameters of any training and wrap it up into concise, digestible graphs.',
         bgImage: '/assets/bg/gps-bg.png',
         icon: '/assets/tab-icons/gps-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1552129745',
         bigSlides: [
             '/assets/slides/gps/big/01.png',
             '/assets/slides/gps/big/02.png',
@@ -122,7 +122,7 @@ export const promoApps: IPromoApp[] = [
             'Alarm Clock is a functional yet simple, user friendly and stylish tool fully adapted for your Mac. It will ensure a comfortable awakening at the right time.',
         bgImage: '/assets/bg/alarm-clock-bg.png',
         icon: '/assets/tab-icons/alarm-clock-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1615542893',
         bigSlides: [
             '/assets/slides/alarm-clock/big/01.png',
             '/assets/slides/alarm-clock/big/02.png',
@@ -148,7 +148,7 @@ export const promoApps: IPromoApp[] = [
             'Audio Converter is really a simple and handy tool for converting audio files of different formats -  mp3, mp4, wav, flac, aiff, aac, m4a and etc.',
         bgImage: '/assets/bg/audio-converter-bg.png',
         icon: '/assets/tab-icons/audio-converter-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1612790003',
         bigSlides: [
             '/assets/slides/audio-converter/big/01.png',
             '/assets/slides/audio-converter/big/02.png',
@@ -172,7 +172,7 @@ export const promoApps: IPromoApp[] = [
             'Immerse yourself in the world of your own emotions! Record important things with your voice and get audio and text in one place. Merge records and collect memories.',
         bgImage: '/assets/bg/voice-memos-bg.png',
         icon: '/assets/tab-icons/voice-memos-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1610255722',
         bigSlides: [
             '/assets/slides/voice-memos-mac/big/01.png',
             '/assets/slides/voice-memos-mac/big/02.png',
@@ -196,7 +196,7 @@ export const promoApps: IPromoApp[] = [
             'We’ve created this app to help you create memories. Add your text, photos, audio, set the password or vice versa share your memos with your friends. It’s up to you!',
         bgImage: '/assets/bg/voice-memos-bg.png',
         icon: '/assets/tab-icons/voice-memos-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1556611763',
         bigSlides: [
             '/assets/slides/voice-memos-ios/big/01.png',
             '/assets/slides/voice-memos-ios/big/02.png',
@@ -220,7 +220,7 @@ export const promoApps: IPromoApp[] = [
             'Books Reader is a pocket library and intuitive tool for a perfect reading experience. Without extra fluff or complexity, it takes care of all the basic needs: managing your ebook collections, getting the text on the screen and letting you interact with it as you go at your prime reading.',
         bgImage: '/assets/bg/books-reader-bg.png',
         icon: '/assets/tab-icons/books-reader-icon.png',
-        storeIcon: '',
+        storeLink: 'https://apps.apple.com/us/app/id1550557954',
         bigSlides: [
             '/assets/slides/books-reader/big/01.png',
             '/assets/slides/books-reader/big/02.png',

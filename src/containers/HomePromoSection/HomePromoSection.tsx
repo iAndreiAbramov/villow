@@ -8,7 +8,9 @@ import { PromoSliderSmall } from 'containers/PromoSliderPrimary';
 import { motion } from 'framer-motion';
 import { useQuery } from 'hooks/useQuery';
 import { useTabData } from 'hooks/useTabData';
-import { ReactComponent as AppStoreIcon } from 'icons/app-store.svg';
+import { ReactComponent as AppStoreIos } from 'icons/app-store-ios.svg';
+import { ReactComponent as AppStoreMac } from 'icons/app-store-mac.svg';
+import { Platform } from 'types/promo-slider.types';
 
 import { PromoTabs } from 'components/PromoTabs';
 
@@ -23,7 +25,7 @@ export const HomePromoSection: React.FC = () => {
     const [activeTabId, setActiveTabId] = useState<string | null>(null);
     const [currentSlide, setCurrentSlide] = useState(1);
 
-    const { title, subtitle, description, bgImage, smallSlides, platform } = useTabData({
+    const { title, subtitle, description, bgImage, smallSlides, platform, storeLink } = useTabData({
         tabData: promoApps,
         activeTabId: activeTabId,
     });
@@ -67,12 +69,7 @@ export const HomePromoSection: React.FC = () => {
                             <p className={CnPromo('description')}>{description}</p>
                         </div>
                         <div className={CnPromo('links')}>
-                            <a href="https://www.apple.com/ru/app-store/">
-                                <AppStoreIcon />
-                            </a>
-                            <a href="https://www.apple.com/ru/app-store/">
-                                <AppStoreIcon />
-                            </a>
+                            <a href={storeLink}>{platform === Platform.Ios ? <AppStoreIos /> : <AppStoreMac />}</a>
                         </div>
                     </div>
                     <div className={CnPromo('sliderWrapper')}>

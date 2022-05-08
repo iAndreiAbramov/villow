@@ -10,7 +10,7 @@ const TAB_DATA_STUB: IPromoApp = {
     description: '',
     bgImage: '',
     icon: '',
-    storeIcon: '',
+    storeLink: '',
     bigSlides: [],
     smallSlides: [],
 };

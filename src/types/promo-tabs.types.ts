@@ -9,7 +9,7 @@ export interface IPromoApp {
     description: string;
     bgImage: string;
     icon: string;
-    storeIcon: string;
+    storeLink: string;
     bigSlides: string[];
     smallSlides: string[];
 }
