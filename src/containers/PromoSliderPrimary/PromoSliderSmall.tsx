@@ -4,32 +4,40 @@ import { motion } from 'framer-motion';
 import { useSliderWidth } from 'hooks/useSliderWidth';
 import { ReactComponent as ArrowLeft } from 'icons/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'icons/arrow-right.svg';
+import { Platform } from 'types/promo-slider.types';
 
 import { PaginationItem } from './components/PaginationItem';
 import { PromoSlide } from './components/PromoSlide';
-import { IPromoSliderSmallProps } from './PromoSliderPrimary.types';
+import { IPromoSliderSmallProps } from './PromoSliderSmall.types';
 
-import './PromoSliderPrimary.scss';
+import './PromoSliderSmall.scss';
 
 const CnPromoSlider = cn('promoSlider');
 
-export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({ slides }) => {
+export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({
+    slides,
+    currentSlide = 1,
+    setCurrentSlide,
+    platform,
+}) => {
     const sliderWindowRef: RefObject<HTMLDivElement> = useRef(null);
     const innerWrapperRef: RefObject<HTMLDivElement> = useRef(null);
     const { innerWidth, windowWidth } = useSliderWidth({ sliderWindowRef, innerWrapperRef });
-    const [currentSlide, setCurrentSlide] = useState(1);
     const [animateValue, setAnimateValue] = useState(0);
     const [isLocked, setIsLocked] = useState(true);
 
-    const handlePrevClick: MouseEventHandler = useCallback((evt) => {
-        evt.preventDefault();
-        setCurrentSlide((current) => {
-            if (current > 1) {
-                return current - 1;
-            }
-            return current;
-        });
-    }, []);
+    const handlePrevClick: MouseEventHandler = useCallback(
+        (evt) => {
+            evt.preventDefault();
+            setCurrentSlide((current) => {
+                if (current > 1) {
+                    return current - 1;
+                }
+                return current;
+            });
+        },
+        [setCurrentSlide],
+    );
 
     const handleNextClick: MouseEventHandler = useCallback(
         (evt) => {
@@ -41,12 +49,15 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({ slides }) =
                 return current;
             });
         },
-        [slides.length],
+        [slides.length, setCurrentSlide],
     );
 
-    const handlePaginationClick = useCallback((order: number) => {
-        setCurrentSlide(order);
-    }, []);
+    const handlePaginationClick = useCallback(
+        (order: number) => {
+            setCurrentSlide(order);
+        },
+        [setCurrentSlide],
+    );
 
     useEffect(() => {
         if (!windowWidth || !innerWidth || isLocked) {
@@ -61,7 +72,14 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({ slides }) =
     }, [windowWidth, currentSlide]);
 
     return (
-        <div className={CnPromoSlider()}>
+        <div
+            className={CnPromoSlider()}
+            style={
+                platform === Platform.Ios
+                    ? { gridTemplateColumns: '1fr minmax(180px, min-content) 1fr' }
+                    : { gridTemplateColumns: '1fr minmax(180px, max-content) 1fr' }
+            }
+        >
             <div className={CnPromoSlider('arrowLeft', { disabled: currentSlide <= 1 })} onClick={handlePrevClick}>
                 <ArrowLeft />
             </div>
@@ -72,9 +90,12 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({ slides }) =
                     animate={{
                         x: animateValue,
                     }}
+                    transition={{
+                        duration: 0.3,
+                    }}
                 >
                     {slides.map((slideSrc) => (
-                        <PromoSlide src={slideSrc} width={windowWidth || 0} key={slideSrc} />
+                        <PromoSlide src={slideSrc} key={slideSrc} />
                     ))}
                 </motion.div>
             </div>

@@ -3,7 +3,7 @@
 .promoSlider {
     display: grid;
     grid-template-rows: minmax(280px, 1fr) auto;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr minmax(180px, max-content) 1fr;
     -webkit-column-gap: 24px;
     -moz-column-gap: 24px;
     column-gap: 24px;
@@ -13,6 +13,7 @@
 .promoSlider-arrowLeft {
     grid-column: 1/2;
     align-self: center;
+    justify-self: flex-end;
 
     display: flex;
     align-items: center;
@@ -28,10 +29,10 @@
 }
 
 .promoSlider-sliderWindow {
-    position: relative;
     overflow-x: hidden;
     grid-column: 2/3;
     justify-self: center;
+    flex: 0 2 auto;
 
     display: flex;
     align-items: center;
@@ -42,6 +43,7 @@
 .promoSlider-arrowRight {
     grid-column: 3/-1;
     align-self: center;
+    flex: 2 0 auto;
 
     display: flex;
     align-items: center;
@@ -65,6 +67,7 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
+    min-height: 12px;
 }
 
 .promoSlider-paginationItem {
@@ -78,15 +81,27 @@
 }
 
 .promoSlider-innerWrapper {
-    position: absolute;
-
     display: flex;
     align-items: center;
 }
 
 .promoSlider-slide {
+    flex-shrink: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     min-width: 100%;
     max-width: 100%;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    & img {
+        object-fit: contain;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        height: 280px;
+    }
 }

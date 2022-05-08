@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 40px;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -20,6 +21,7 @@
     padding-top: 22vh;
     padding-bottom: 10vh;
     min-height: 100vh;
+    max-height: 100vh;
 }
 
 .promo-row {
@@ -31,7 +33,6 @@
 .promo-textGroup {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     min-width: 280px;
     max-width: 50%;
@@ -82,8 +83,9 @@
 }
 
 .promo-sliderWrapper {
-    flex: 1 0 auto;
-    min-width: 280px;
+    flex: 1 1 auto;
+    min-width: 180px;
+    width: min-content;
     max-width: 50%;
 }
 
@@ -92,4 +94,12 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
+
+    padding: 14px 16px 6px;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+
+    background-color: rgba(255, 255, 255, 0.178018);
+    backdrop-filter: blur(54.3656px);
 }

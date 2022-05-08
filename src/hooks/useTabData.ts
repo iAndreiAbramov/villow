@@ -1,8 +1,9 @@
+import { Platform } from 'types/promo-slider.types';
 import { IPromoApp } from 'types/promo-tabs.types';
 
 const TAB_DATA_STUB: IPromoApp = {
     id: 0,
-    platform: 'mac',
+    platform: Platform.Mac,
     appName: '',
     title: '',
     subtitle: '',

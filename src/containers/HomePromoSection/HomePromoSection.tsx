@@ -21,14 +21,16 @@ export const HomePromoSection: React.FC = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [activeTabId, setActiveTabId] = useState<string | null>(null);
+    const [currentSlide, setCurrentSlide] = useState(1);
 
-    const { title, subtitle, description, bgImage, smallSlides } = useTabData({
+    const { title, subtitle, description, bgImage, smallSlides, platform } = useTabData({
         tabData: promoApps,
         activeTabId: activeTabId,
     });
 
     const handleTabClick = useCallback((tabId: string) => {
         setActiveTabId(tabId);
+        setCurrentSlide(1);
     }, []);
 
     useEffect(() => {
@@ -74,7 +76,12 @@ export const HomePromoSection: React.FC = () => {
                         </div>
                     </div>
                     <div className={CnPromo('sliderWrapper')}>
-                        <PromoSliderSmall slides={smallSlides} />
+                        <PromoSliderSmall
+                            slides={smallSlides}
+                            currentSlide={currentSlide}
+                            setCurrentSlide={setCurrentSlide}
+                            platform={platform}
+                        />
                     </div>
                 </div>
                 <div className={CnPromo('tabs')}>

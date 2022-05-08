@@ -23,6 +23,9 @@ export const PaginationItem: React.FC<IPaginationItemProps> = ({ order, isActive
             animate={isActive ? 'active' : 'regular'}
             className="promoSlider-paginationItem"
             onClick={() => handleClick(order)}
+            transition={{
+                duration: 0.3,
+            }}
         />
     );
 };

@@ -1,6 +1,8 @@
+import { Platform } from './promo-slider.types';
+
 export interface IPromoApp {
     id: number;
-    platform: 'mac' | 'ios';
+    platform: Platform;
     appName: string;
     title: string;
     subtitle: string;
