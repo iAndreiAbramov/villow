@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Platform } from 'types/promo-slider.types';
 
-export interface IPromoSliderSmallProps {
+export interface IPromoSliderProps {
     slides: string[];
     currentSlide: number;
     setCurrentSlide: Dispatch<SetStateAction<number>>;
-    platform: Platform;
+    handleSlideClick?: () => void;
+    isMobile: boolean;
+    isExpanded: boolean;
 }

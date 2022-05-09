@@ -4,26 +4,27 @@ import { motion } from 'framer-motion';
 import { useSliderWidth } from 'hooks/useSliderWidth';
 import { ReactComponent as ArrowLeft } from 'icons/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'icons/arrow-right.svg';
-import { Platform } from 'types/promo-slider.types';
 
 import { PaginationItem } from './components/PaginationItem';
 import { PromoSlide } from './components/PromoSlide';
-import { IPromoSliderSmallProps } from './PromoSliderSmall.types';
+import { IPromoSliderProps } from './PromoSlider.types';
 
-import './PromoSliderSmall.scss';
+import './PromoSlider.scss';
 
 const CnPromoSlider = cn('promoSlider');
 
-export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({
+export const PromoSlider: React.FC<IPromoSliderProps> = ({
     slides,
     currentSlide = 1,
     setCurrentSlide,
-    platform,
+    handleSlideClick,
+    isExpanded,
+    isMobile,
 }) => {
     const sliderWindowRef: RefObject<HTMLDivElement> = useRef(null);
     const innerWrapperRef: RefObject<HTMLDivElement> = useRef(null);
     const { innerWidth, windowWidth } = useSliderWidth({ sliderWindowRef, innerWrapperRef });
-    const [animateValue, setAnimateValue] = useState(0);
+    const [animateValue, setAnimateValue] = useState((1 - currentSlide) * (windowWidth || 0));
     const [isLocked, setIsLocked] = useState(true);
 
     const handlePrevClick: MouseEventHandler = useCallback(
@@ -72,18 +73,19 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({
     }, [windowWidth, currentSlide]);
 
     return (
-        <div
-            className={CnPromoSlider()}
-            style={
-                platform === Platform.Ios
-                    ? { gridTemplateColumns: '1fr minmax(180px, min-content) 1fr' }
-                    : { gridTemplateColumns: '1fr minmax(180px, max-content) 1fr' }
-            }
-        >
+        <div className={CnPromoSlider()}>
             <div className={CnPromoSlider('arrowLeft', { disabled: currentSlide <= 1 })} onClick={handlePrevClick}>
                 <ArrowLeft />
             </div>
-            <div className={CnPromoSlider('sliderWindow')} ref={sliderWindowRef}>
+            <div
+                className={CnPromoSlider('sliderWindow', {
+                    expanded: isExpanded,
+                    mobile: isMobile,
+                    mobileExpanded: isMobile && isExpanded,
+                })}
+                ref={sliderWindowRef}
+                onClick={handleSlideClick}
+            >
                 <motion.div
                     className={CnPromoSlider('innerWrapper')}
                     ref={innerWrapperRef}
@@ -95,15 +97,9 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({
                     }}
                 >
                     {slides.map((slideSrc) => (
-                        <PromoSlide src={slideSrc} key={slideSrc} />
+                        <PromoSlide src={slideSrc} key={slideSrc} isExpanded={isExpanded} />
                     ))}
                 </motion.div>
-            </div>
-            <div
-                className={CnPromoSlider('arrowRight', { disabled: currentSlide >= slides.length })}
-                onClick={handleNextClick}
-            >
-                <ArrowRight />
             </div>
             <div className={CnPromoSlider('pagination')}>
                 {slides.map((item, index) => (
@@ -114,6 +110,12 @@ export const PromoSliderSmall: React.FC<IPromoSliderSmallProps> = ({
                         handleClick={handlePaginationClick}
                     />
                 ))}
+            </div>
+            <div
+                className={CnPromoSlider('arrowRight', { disabled: currentSlide >= slides.length })}
+                onClick={handleNextClick}
+            >
+                <ArrowRight />
             </div>
         </div>
     );

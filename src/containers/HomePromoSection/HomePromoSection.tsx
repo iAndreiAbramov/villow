@@ -4,8 +4,10 @@ import { QueryParam } from 'constants/QueryParam';
 import React, { useCallback, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
-import { PromoSliderSmall } from 'containers/PromoSliderPrimary';
+import { PromoSlider } from 'containers/PromoSlider';
 import { motion } from 'framer-motion';
+import { useCloseByEsc } from 'hooks/useCloseByEsc';
+import { useOverflow } from 'hooks/useOverflow';
 import { useQuery } from 'hooks/useQuery';
 import { useTabData } from 'hooks/useTabData';
 import { ReactComponent as AppStoreIos } from 'icons/app-store-ios.svg';
@@ -23,8 +25,20 @@ export const HomePromoSection: React.FC = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [currentSlide, setCurrentSlide] = useState(1);
+    const [isExpanded, setIsExpanded] = useState(true);
 
-    const { title, subtitle, description, bgImage, smallSlides, platform, storeLink } = useTabData(promoApps);
+    const { title, subtitle, description, bgImage, smallSlides, platform, storeLink, bigSlides } =
+        useTabData(promoApps);
+
+    const handleCloseByEsc = useCallback(() => {
+        setIsExpanded(false);
+        setCurrentSlide(1);
+    }, []);
+
+    const handleSlideClick = useCallback(() => {
+        setIsExpanded(true);
+        setCurrentSlide(1);
+    }, []);
 
     const handleTabClick = useCallback(
         (tabId: string) => {
@@ -38,6 +52,9 @@ export const HomePromoSection: React.FC = () => {
         [navigate, query, pathname],
     );
 
+    useCloseByEsc(handleCloseByEsc);
+    useOverflow(isExpanded);
+
     return (
         <motion.section
             className={CnPromo()}
@@ -50,7 +67,7 @@ export const HomePromoSection: React.FC = () => {
                 opacity: 1,
             }}
         >
-            <div className={`${CnPromo('contentWrapper')} container`} onDoubleClick={(evt) => evt.preventDefault()}>
+            <div className={`${CnPromo('contentWrapper')} container`}>
                 <div className={CnPromo('row')}>
                     <div className={CnPromo('textGroup')}>
                         <div className={CnPromo('text')}>
@@ -62,14 +79,33 @@ export const HomePromoSection: React.FC = () => {
                             <a href={storeLink}>{platform === Platform.Ios ? <AppStoreIos /> : <AppStoreMac />}</a>
                         </div>
                     </div>
-                    <div className={CnPromo('sliderWrapper')}>
-                        <PromoSliderSmall
-                            slides={smallSlides}
-                            currentSlide={currentSlide}
-                            setCurrentSlide={setCurrentSlide}
-                            platform={platform}
-                        />
-                    </div>
+                    {!isExpanded && (
+                        <div className={CnPromo('sliderOverlay')}>
+                            <div className={CnPromo('sliderWrapper')}>
+                                <PromoSlider
+                                    slides={smallSlides}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
+                                    isMobile={platform === Platform.Ios}
+                                    handleSlideClick={handleSlideClick}
+                                    isExpanded={false}
+                                />
+                            </div>
+                        </div>
+                    )}
+                    {isExpanded && (
+                        <div className={CnPromo('sliderOverlay', { expanded: isExpanded })}>
+                            <div className={CnPromo('sliderWrapper', { expanded: isExpanded })}>
+                                <PromoSlider
+                                    slides={bigSlides}
+                                    currentSlide={currentSlide}
+                                    setCurrentSlide={setCurrentSlide}
+                                    isMobile={platform === Platform.Ios}
+                                    isExpanded
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className={CnPromo('tabs')}>
                     <PromoTabs tabs={promoApps} handleTabClick={handleTabClick} />
