@@ -9,5 +9,4 @@ export interface IDropdownProps {
     options: IDropdownOption[];
     direction: DropdownDirection;
     onChange?: () => void;
-    defaultName?: string;
 }

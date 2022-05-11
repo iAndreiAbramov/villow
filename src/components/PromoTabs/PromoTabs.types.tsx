@@ -1,7 +1,6 @@
-import { IPromoTab } from 'types/promo-tabs.types';
+import { IPromoApp } from 'types/promo-tabs.types';
 
 export interface IPromoTabsProps {
-    tabs: IPromoTab[];
-    activeTabId: string | null;
+    tabs: IPromoApp[];
     handleTabClick: (tabId: string) => void;
 }

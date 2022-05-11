@@ -11,6 +11,7 @@ import { FormState } from 'final-form';
 import { useCloseByEsc } from 'hooks/useCloseByEsc';
 import { useOverflow } from 'hooks/useOverflow';
 import { ReactComponent as Plane } from 'icons/plane.svg';
+import { postQuestion } from 'services/post-question';
 import { IFormValues } from 'types/form.types';
 import { SubmitStatus } from 'types/SubmitStatus';
 
@@ -44,8 +45,17 @@ export const ContactForm: React.FC = () => {
     }, []);
 
     const onSubmit = useCallback((values: IFormValues): void => {
-        alert(JSON.stringify(values, null, ' '));
-        setSubmitStatus(Math.round(Math.random()) ? SubmitStatus.Success : SubmitStatus.Error);
+        postQuestion(values)
+            .then((res) => {
+                if (res?.ok) {
+                    setSubmitStatus(SubmitStatus.Success);
+                } else {
+                    setSubmitStatus(SubmitStatus.Error);
+                }
+            })
+            .catch(() => {
+                setSubmitStatus(SubmitStatus.Error);
+            });
     }, []);
 
     useEffect(() => {

@@ -1,9 +1,10 @@
 import { AppRoute } from 'constants/AppRoute';
-import { HeaderDropdownOptions } from 'constants/dropdown-options';
+import { promoApps } from 'constants/promo-apps';
 
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
+import { useDropdownOptions } from 'hooks/useDropdownOptions';
 import { ReactComponent as Letter } from 'icons/letter.svg';
 
 import { Button } from 'components/Button';
@@ -20,13 +21,15 @@ const CnHeaderNav = cn('headerNav');
 export const HeaderNav: React.FC<IHeaderNavProps> = ({ items = [] }) => {
     const navigate = useNavigate();
 
+    const dropdownOptions = useDropdownOptions(promoApps);
+
     const handleContactButtonClick = useCallback(() => {
         navigate(AppRoute.Contact());
     }, [navigate]);
 
     return (
         <nav className={CnHeaderNav()}>
-            <Dropdown options={HeaderDropdownOptions} defaultName="Apps" direction={DropdownDirection.Down} />
+            <Dropdown options={dropdownOptions} direction={DropdownDirection.Down} />
             <ul className={CnHeaderNav('list')}>
                 {items.length > 0 && items.map((item) => <HeaderNavItem key={item.id} item={item} />)}
             </ul>
