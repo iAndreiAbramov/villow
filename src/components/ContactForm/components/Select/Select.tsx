@@ -20,7 +20,8 @@ export const Select: React.FC<ISelectProps> = ({ name, label, required = false, 
                         <select
                             className={CnInput('input', {
                                 select: true,
-                                error: meta.invalid && meta.submitFailed && !meta.dirtySinceLastSubmit,
+                                error:
+                                    meta.invalid && meta.submitFailed && !meta.dirtySinceLastSubmit,
                             })}
                             {...input}
                         >

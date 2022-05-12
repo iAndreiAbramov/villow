@@ -18,7 +18,8 @@ export const MessagePopup: React.FC<IMessagePopupProps> = ({ handleClose, submit
 
     const title = submitStatus === SubmitStatus.Success ? 'Sent successfully' : 'Not sent';
     const icon = submitStatus === SubmitStatus.Success ? <MessageSuccess /> : <MessageFailed />;
-    const message = submitStatus === SubmitStatus.Success ? SubmitMessage.Success : SubmitMessage.Error;
+    const message =
+        submitStatus === SubmitStatus.Success ? SubmitMessage.Success : SubmitMessage.Error;
 
     useCloseByClick(popupRef, handleClose);
 

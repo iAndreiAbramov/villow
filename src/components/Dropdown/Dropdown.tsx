@@ -17,7 +17,10 @@ import './Dropdown.scss';
 
 const CnDropdown = cn('dropdown');
 
-export const Dropdown: React.FC<IDropdownProps> = ({ options = [], direction = DropdownDirection.Down }) => {
+export const Dropdown: React.FC<IDropdownProps> = ({
+    options = [],
+    direction = DropdownDirection.Down,
+}) => {
     const query = useQuery();
     const navigate = useNavigate();
     const [areOptionsShown, setAreOptionsShown] = useState<boolean>(false);
@@ -38,6 +41,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({ options = [], direction = D
                 search: query.toString(),
             });
             setAreOptionsShown(false);
+            window.scrollTo(0, 0);
         },
         [query, navigate],
     );
@@ -60,7 +64,11 @@ export const Dropdown: React.FC<IDropdownProps> = ({ options = [], direction = D
             {areOptionsShown && (
                 <ul className={CnDropdown('options', { direction: direction })}>
                     {options.map((option) => (
-                        <DropdownItem key={option.id} option={option} handleClick={handleOptionClick} />
+                        <DropdownItem
+                            key={option.id}
+                            option={option}
+                            handleClick={handleOptionClick}
+                        />
                     ))}
                 </ul>
             )}

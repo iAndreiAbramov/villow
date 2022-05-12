@@ -1,16 +1,16 @@
 import { INavOption } from 'types/nav.types';
 
-import { ABOUT_ANCHOR, REMOTE_ANCHOR } from './common';
+import { Anchor } from './Anchor';
 
 export const HeaderNavItems: INavOption[] = [
     {
         name: 'About us',
-        href: `${ABOUT_ANCHOR}`,
         id: 1,
+        anchor: Anchor.About,
     },
     {
         name: 'Remote work',
-        href: `${REMOTE_ANCHOR}`,
         id: 2,
+        anchor: Anchor.Remote,
     },
 ];

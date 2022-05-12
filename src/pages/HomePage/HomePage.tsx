@@ -4,15 +4,15 @@ import { QueryParam } from 'constants/QueryParam';
 
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ContentContainer } from 'containers/ContentContainer';
-import { HeaderContainer } from 'containers/HeaderContainer';
-import { HomePromoSection } from 'containers/HomePromoSection';
-import { MainContainer } from 'containers/MainContainer';
 import { useQuery } from 'hooks/useQuery';
 import { ReactComponent as Logo } from 'icons/logo.svg';
 
+import { ContentContainer } from 'components/ContentContainer';
+import { HeaderContainer } from 'components/HeaderContainer';
 import { HeaderNav } from 'components/HeaderNav';
 import { HomePageContent } from 'components/HomePageContent';
+import { HomePromoSection } from 'components/HomePromoSection';
+import { MainContainer } from 'components/MainContainer';
 
 export const HomePage: React.FC = () => {
     const navigate = useNavigate();
