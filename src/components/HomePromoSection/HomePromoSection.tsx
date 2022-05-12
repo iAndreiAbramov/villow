@@ -4,7 +4,6 @@ import { QueryParam } from 'constants/QueryParam';
 import React, { useCallback, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
-import { PromoSlider } from 'containers/PromoSlider';
 import { motion } from 'framer-motion';
 import { useCloseByEsc } from 'hooks/useCloseByEsc';
 import { useOverflow } from 'hooks/useOverflow';
@@ -14,6 +13,7 @@ import { ReactComponent as AppStoreIos } from 'icons/app-store-ios.svg';
 import { ReactComponent as AppStoreMac } from 'icons/app-store-mac.svg';
 import { Platform } from 'types/promo-slider.types';
 
+import { PromoSlider } from 'components/PromoSlider';
 import { PromoTabs } from 'components/PromoTabs';
 
 import './HomePromoSection.scss';
@@ -25,7 +25,7 @@ export const HomePromoSection: React.FC = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [currentSlide, setCurrentSlide] = useState(1);
-    const [isExpanded, setIsExpanded] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const { title, subtitle, description, bgImage, smallSlides, platform, storeLink, bigSlides } =
         useTabData(promoApps);
@@ -48,6 +48,7 @@ export const HomePromoSection: React.FC = () => {
                 search: query.toString(),
             });
             setCurrentSlide(1);
+            window.scrollTo(0, 0);
         },
         [navigate, query, pathname],
     );
@@ -76,7 +77,9 @@ export const HomePromoSection: React.FC = () => {
                             <p className={CnPromo('description')}>{description}</p>
                         </div>
                         <div className={CnPromo('links')}>
-                            <a href={storeLink}>{platform === Platform.Ios ? <AppStoreIos /> : <AppStoreMac />}</a>
+                            <a href={storeLink}>
+                                {platform === Platform.Ios ? <AppStoreIos /> : <AppStoreMac />}
+                            </a>
                         </div>
                     </div>
                     {!isExpanded && (

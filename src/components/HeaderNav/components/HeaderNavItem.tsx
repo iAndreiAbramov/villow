@@ -4,11 +4,10 @@ import { IHeaderNavItemProps } from './HeaderNavItem.types';
 
 import './HeaderNavItem.scss';
 
-export const HeaderNavItem: React.FC<IHeaderNavItemProps> = ({ item }) => {
-    const { name, href } = item;
+export const HeaderNavItem: React.FC<IHeaderNavItemProps> = ({ item, handleClick }) => {
     return (
-        <li className="nav-item">
-            <a href={href}>{name}</a>
+        <li className="nav-item" onClick={() => handleClick(item.anchor)}>
+            {item.name}
         </li>
     );
 };

@@ -1,5 +1,7 @@
+import { Anchor } from 'constants/Anchor';
+
 export interface INavOption {
     name: string;
-    href: string;
+    anchor: Anchor;
     id: number;
 }

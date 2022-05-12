@@ -3,7 +3,10 @@ import { motion } from 'framer-motion';
 
 import { IContentContainerProps } from './ContentContainer.types';
 
-export const ContentContainer: React.FC<IContentContainerProps> = ({ customClassName, children }) => {
+export const ContentContainer: React.FC<IContentContainerProps> = ({
+    customClassName,
+    children,
+}) => {
     return (
         <motion.section
             className={`content-container ${customClassName ? customClassName : ''}`}

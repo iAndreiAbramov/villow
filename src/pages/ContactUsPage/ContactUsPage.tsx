@@ -3,13 +3,13 @@ import { HeaderNavItems } from 'constants/nav-items';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ContentContainer } from 'containers/ContentContainer';
-import { HeaderContainer } from 'containers/HeaderContainer';
-import { MainContainer } from 'containers/MainContainer';
 import { ReactComponent as Logo } from 'icons/logo.svg';
 
 import { ContactForm } from 'components/ContactForm';
+import { ContentContainer } from 'components/ContentContainer';
+import { HeaderContainer } from 'components/HeaderContainer';
 import { HeaderNav } from 'components/HeaderNav';
+import { MainContainer } from 'components/MainContainer';
 
 export const ContactUsPage: React.FC = () => {
     return (

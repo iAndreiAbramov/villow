@@ -4,12 +4,12 @@ import { HeaderNavItems } from 'constants/nav-items';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
-import { ContentContainer } from 'containers/ContentContainer';
-import { HeaderContainer } from 'containers/HeaderContainer';
-import { MainContainer } from 'containers/MainContainer';
 import { ReactComponent as Logo } from 'icons/logo.svg';
 
+import { ContentContainer } from 'components/ContentContainer';
+import { HeaderContainer } from 'components/HeaderContainer';
 import { HeaderNav } from 'components/HeaderNav';
+import { MainContainer } from 'components/MainContainer';
 
 import './NotFoundPage.scss';
 

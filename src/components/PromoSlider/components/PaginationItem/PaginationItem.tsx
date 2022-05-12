@@ -16,7 +16,11 @@ const variants = {
     },
 };
 
-export const PaginationItem: React.FC<IPaginationItemProps> = ({ order, isActive, handleClick }) => {
+export const PaginationItem: React.FC<IPaginationItemProps> = ({
+    order,
+    isActive,
+    handleClick,
+}) => {
     return (
         <motion.div
             variants={variants}

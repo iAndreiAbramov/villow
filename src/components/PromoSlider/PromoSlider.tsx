@@ -1,4 +1,11 @@
-import React, { MouseEventHandler, RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+    MouseEventHandler,
+    RefObject,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
 import { cn } from '@bem-react/classname';
 import { motion } from 'framer-motion';
 import { useSliderWidth } from 'hooks/useSliderWidth';
@@ -74,7 +81,10 @@ export const PromoSlider: React.FC<IPromoSliderProps> = ({
 
     return (
         <div className={CnPromoSlider()}>
-            <div className={CnPromoSlider('arrowLeft', { disabled: currentSlide <= 1 })} onClick={handlePrevClick}>
+            <div
+                className={CnPromoSlider('arrowLeft', { disabled: currentSlide <= 1 })}
+                onClick={handlePrevClick}
+            >
                 <ArrowLeft />
             </div>
             <div
