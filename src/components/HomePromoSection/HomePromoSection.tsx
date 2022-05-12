@@ -1,7 +1,7 @@
 import { promoApps } from 'constants/promo-apps';
 import { QueryParam } from 'constants/QueryParam';
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import { motion } from 'framer-motion';
@@ -27,10 +27,14 @@ export const HomePromoSection: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+
     const { title, subtitle, description, bgImage, smallSlides, platform, storeLink, bigSlides } =
         useTabData(promoApps);
 
-    const handleCloseByEsc = useCallback(() => {
+    const handleCollapse = useCallback(() => {
+        document.body.style.overflow = '';
+        document.body.style.marginRight = '';
         setIsExpanded(false);
         setCurrentSlide(1);
     }, []);
@@ -53,7 +57,7 @@ export const HomePromoSection: React.FC = () => {
         [navigate, query, pathname],
     );
 
-    useCloseByEsc(handleCloseByEsc);
+    useCloseByEsc(handleCollapse);
     useOverflow(isExpanded);
 
     return (
@@ -98,12 +102,20 @@ export const HomePromoSection: React.FC = () => {
                     )}
                     {isExpanded && (
                         <div className={CnPromo('sliderOverlay', { expanded: isExpanded })}>
+                            <button
+                                className={CnPromo('closeButton')}
+                                ref={closeButtonRef}
+                                onClick={handleCollapse}
+                            >
+                                X
+                            </button>
                             <div className={CnPromo('sliderWrapper', { expanded: isExpanded })}>
                                 <PromoSlider
                                     slides={bigSlides}
                                     currentSlide={currentSlide}
                                     setCurrentSlide={setCurrentSlide}
                                     isMobile={platform === Platform.Ios}
+                                    handleSlideClick={handleSlideClick}
                                     isExpanded
                                 />
                             </div>

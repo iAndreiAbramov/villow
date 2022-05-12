@@ -17,8 +17,8 @@ export const FooterContent: React.FC = () => {
                 <div className={CnFooter('copyright')}>
                     © 2020-2022 Villow LLC. All rights reserved.
                 </div>
-                <div className={CnFooter('text')}>ООО «Рога и копыта» ОГРН: 123456789</div>
-                <div className={CnFooter('text')}>ИНН: 123456789</div>
+                <div className={CnFooter('text')}>VILLOW, LLC</div>
+                <div className={CnFooter('text')}>TIN: 123456789</div>
             </div>
             <div className={CnFooter('right')}>
                 <FooterSocials />

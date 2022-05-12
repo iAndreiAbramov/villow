@@ -31,13 +31,16 @@ export const ContactForm: React.FC = () => {
     const [isPopupShown, setIsPopupShown] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(SubmitStatus.Initial);
 
-    const handleFormChange = useCallback((formState: FormState<Record<string, unknown>, Partial<IFormValues>>) => {
-        if (formState.values.theme === Theme.Application) {
-            setIsSupportSelected(true);
-        } else {
-            setIsSupportSelected(false);
-        }
-    }, []);
+    const handleFormChange = useCallback(
+        (formState: FormState<Record<string, unknown>, Partial<IFormValues>>) => {
+            if (formState.values.theme === Theme.Application) {
+                setIsSupportSelected(true);
+            } else {
+                setIsSupportSelected(false);
+            }
+        },
+        [],
+    );
 
     const handlePopupClose = useCallback(() => {
         setIsPopupShown(false);
@@ -69,16 +72,28 @@ export const ContactForm: React.FC = () => {
 
     return (
         <>
-            {isPopupShown && <MessagePopup handleClose={handlePopupClose} submitStatus={submitStatus} />}
+            {isPopupShown && (
+                <MessagePopup handleClose={handlePopupClose} submitStatus={submitStatus} />
+            )}
             <Form onSubmit={onSubmit} validate={validateForm}>
                 {({ handleSubmit, submitFailed, hasValidationErrors }) => (
                     <form className={CnForm()} onSubmit={handleSubmit}>
                         <h2 className={CnForm('title')}>Contact Us</h2>
                         <div className={CnForm('row')}>
-                            <Input label="Name" name="name" required placeholder="Enter your name" />
+                            <Input
+                                label="Name"
+                                name="name"
+                                required
+                                placeholder="Enter your name"
+                            />
                         </div>
                         <div className={CnForm('row')}>
-                            <Input label="Email" name="email" required placeholder="Enter your email" />
+                            <Input
+                                label="Email"
+                                name="email"
+                                required
+                                placeholder="Enter your email"
+                            />
                             <Select name="country" label="Country" options={countriesList} />
                         </div>
                         <div className={CnForm('row')}>
@@ -90,12 +105,18 @@ export const ContactForm: React.FC = () => {
                             </div>
                         )}
                         <div className={CnForm('row')}>
-                            <Input label="Message" name="message" isTextarea placeholder="Type your message" required />
+                            <Input
+                                label="Message"
+                                name="message"
+                                isTextarea
+                                placeholder="Type your message"
+                                required
+                            />
                         </div>
                         <div className={CnForm('row')}>
                             <span className={CnForm('agreement')}>
-                                By clicking the &ldquo;Submit&ldquo; button, I agree to the processing of the data
-                                specified in the form in accordance with the
+                                By clicking the &ldquo;Submit&ldquo; button, I agree to the
+                                processing of the data specified in the form in accordance with the
                                 <Link to={AppRoute.Privacy()} className={CnForm('link')}>
                                     Privacy Policy.
                                 </Link>

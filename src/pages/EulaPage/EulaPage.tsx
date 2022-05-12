@@ -79,10 +79,9 @@ export const EulaPage: React.FC = () => {
                                 <p className={CnContent('text')}>
                                     <b>Policy</b> - The rules governing the collection, processing
                                     and protection of the User&apos;s personal data during the use
-                                    of the Application. Available at:
+                                    of the Application. Available at:&#32;
                                     <a href="https://villow.studio/privacy">
-                                        {' '}
-                                        https://villow.studio/privacy{' '}
+                                        https://villow.studio/privacy
                                     </a>
                                 </p>
                             </div>
@@ -419,7 +418,7 @@ export const EulaPage: React.FC = () => {
                                     <li>
                                         7.5. The Right Holder is entitled to update the Agreement at
                                         any time. The new version of the Agreement comes into force
-                                        from the moment of its posting at:
+                                        from the moment of its posting at:&#32;
                                         <a href="https://villow.studio/terms">
                                             https://villow.studio/terms
                                         </a>
@@ -456,7 +455,7 @@ export const EulaPage: React.FC = () => {
                                     </li>
                                     <li>
                                         8.4. The current version of this Agreement is available to
-                                        the User at:
+                                        the User at:&#32;
                                         <a href="https://villow.studio/terms">
                                             https://villow.studio/terms
                                         </a>
