@@ -18,6 +18,7 @@
     width: max-content;
     min-width: 100%;
     max-width: 380px;
+    min-height: 280px;
 }
 
 .promoSlider-sliderWindow_expanded {
@@ -125,6 +126,8 @@
 
         width: min-content;
         max-height: 280px;
+        min-height: 280px;
+        min-width: 380px;
         height: auto;
 
         cursor: pointer;
@@ -144,6 +147,7 @@
 
         width: min-content;
         max-height: 70vh;
+        min-height: 70vh;
         height: auto;
 
         cursor: auto;
